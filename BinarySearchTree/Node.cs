@@ -6,73 +6,19 @@ using System.Threading.Tasks;
 
 namespace BinarySearchTree
 {
-    //class Node
-    //{
-    //    public int number;
-    //    public Node leftChild;
-    //    public Node rightChild;
-
-    //    public Node(int value)
-    //    {
-    //        number = value;
-    //        leftChild = null;
-    //        rightChild = null;
-    //    }
-    //}
-    public class Nodes<TKey, TValue> : IEnumerable<Nodes<TKey, TValue>>, IEquatable<Nodes<TKey, TValue>>
-       where TKey : IComparable<TKey>
+    public class Node<T> where T : IComparable
     {
-        public Nodes(TKey key, TValue value) : this(key, value, null)
+        private T value;
+        private Node<T> rightChild;
+        private Node<T> leftChild;
+        public T Value { get; set; }
+        public Node<T> RightChild { get; set; }
+        public Node<T> LeftChild { get; set; }
+        public Node(T value)
         {
+            this.Value = value;
         }
 
-        public Nodes(TKey key, TValue value, Nodes<TKey, TValue> parent)
-        {
-            Key = key;
-            Value = value;
-            Parent = parent;
-        }
 
-        public Nodes<TKey, TValue> Parent { get; set; }
-        public Nodes<TKey, TValue> Left { get; set; }
-        public Nodes<TKey, TValue> Right { get; set; }
-        public TKey Key { get; set; }
-        public TValue Value { get; set; }
-        public int Balance { get; set; }
-
-        public bool Equals(Nodes<TKey, TValue> other)
-        {
-            if (other == null)
-            {
-                throw new ArgumentNullException(nameof(other));
-            }
-            return Key.CompareTo(other.Key) == 0;
-        }
-
-        public override bool Equals(object other)
-        {
-            if (ReferenceEquals(null, other))
-            {
-                return false;
-            }
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-            if (other.GetType() != GetType())
-            {
-                return false;
-            }
-
-            return Equals(other as Nodes<TKey, TValue>);
-        }
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-        public IEnumerator<Nodes<TKey, TValue>> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
