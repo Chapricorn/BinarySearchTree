@@ -11,12 +11,12 @@ namespace BinarySearchTree
         static void Main(string[] args)
         {
             BinarySearchTree<int> Children = new BinarySearchTree<int>(25);
-            Children.Add(10);
-            Children.Add(20);
-            Children.Add(40);
-            Children.Add(5);
-            Children.Add(25);
-            Children.Add(35);
+            Children.AddLeaf(10);
+            Children.AddLeaf(20);
+            Children.AddLeaf(40);
+            Children.AddLeaf(5);
+            Children.AddLeaf(25);
+            Children.AddLeaf(35);
             Console.ReadKey();
         }
     }

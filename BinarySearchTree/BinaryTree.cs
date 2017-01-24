@@ -14,7 +14,7 @@ namespace BinarySearchTree
         {
             Parent = new Node<T>(value);
         }
-        public void Add(T value)
+        public void AddLeaf(T value)
         {
             int result;
             Node<T> NodePath = new Node<T>(value);
