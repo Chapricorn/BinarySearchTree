@@ -17,58 +17,58 @@ namespace BinarySearchTree
         public void AddLeaf(T value)
         {
             int result;
-            Node<T> NodePath = new Node<T>(value);
-            Node<T> NewNode = Parent, parent = null;
-            while (NewNode != null)
+            Node<T> NewNode = new Node<T>(value);
+            Node<T> CurrentNode = Parent, parent = null;
+            while (CurrentNode != null)
             {
-                result = NewNode.Value.CompareTo(NodePath.Value);
+                result = CurrentNode.Value.CompareTo(NewNode.Value);
                 if (result == 0)
                     return;
                 else if (result > 0)
                 {
-                    parent = NewNode;
-                    NewNode = NewNode.LeftChild;
+                    parent = CurrentNode;
+                    CurrentNode = CurrentNode.LeftChild;
                 }
                 else if (result < 0)
                 {
-                    parent = NewNode;
-                    NewNode = NewNode.RightChild;
+                    parent = CurrentNode;
+                    CurrentNode = CurrentNode.RightChild;
                 }
             }
             if (parent == null)
             {
-                NewNode = NodePath;
+                CurrentNode = NewNode;
             }
             else
             {
-                result = parent.Value.CompareTo(NodePath.Value);
+                result = parent.Value.CompareTo(NewNode.Value);
                 if (result > 0)
                 {
                     parent.
-                        LeftChild = NodePath;
+                        LeftChild = NewNode;
                 }
                 else
                 {
-                    parent.RightChild = NodePath;
+                    parent.RightChild = NewNode;
                 }
             }
         }
         public bool NodeSearch(T value)
         {
-            Node<T> NewNode = Parent;
-            Node<T> NodePath = new Node<T>(value);
-            while (NewNode != null)
+            Node<T> CurrentNode = Parent;
+            Node<T> NewNode = new Node<T>(value);
+            while (CurrentNode != null)
             {
-                result = NewNode.Value.CompareTo(NodePath.Value);
+                result = CurrentNode.Value.CompareTo(NewNode.Value);
                 if (result == 0)
                     return true;
                 else if (result > 0)
                 {
-                    NewNode = NewNode.LeftChild;
+                    CurrentNode = CurrentNode.LeftChild;
                 }
                 else if (result < 0)
                 {
-                    NewNode = NewNode.RightChild;
+                    CurrentNode = CurrentNode.RightChild;
                 }
             }
             return false;
